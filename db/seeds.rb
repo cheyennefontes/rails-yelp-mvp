@@ -12,11 +12,13 @@ Restaurant.destroy_all
 
 puts "Create restaurants"
 
+category = ["chinese", "italian", "japanese", "french", "belgian"]
+
 50.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
-    phone_number: rand(1..9),
-    category: ["chinese", "italian", "japanese", "french", "belgian"].shuffle!
+    phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+    category: category.sample
   )
 end
