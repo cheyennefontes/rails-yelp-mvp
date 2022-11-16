@@ -2,9 +2,16 @@
 <div id="restaurants" class="container m-4 p-3">
 <%= render @restaurant %>
   <p><strong>Reviews</strong></p>
-  <p><%=link_to "add review", new_restaurant_review_path(@restaurant)%></p>
+<h1>New review</h1>
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+<br>
+<%= link_to "Back to restaurants", restaurants_path %>
     <ul class="list-group">
-    <% @restaurant.reviews.each do |review| %>
+    <% @restaurant.reviews.reverse.each do |review| %>
       <li class="list-group-item">
         <%= review.content %>
         <br>Avaliação:

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_restaurant, only: [:new, :create,:show]
+  before_action :set_restaurant, only: [:create]
 
   def new
     @review = Review.new

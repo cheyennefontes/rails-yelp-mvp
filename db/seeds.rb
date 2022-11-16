@@ -15,10 +15,17 @@ puts "Create restaurants"
 category = ["chinese", "italian", "japanese", "french", "belgian"]
 
 50.times do
-  Restaurant.create(
+  restaurant = Restaurant.create(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone_in_e164,
     category: category.sample
   )
+  10.times do
+    Review.create(
+      content: Faker::Restaurant.review,
+      rating: rand(0..5),
+      restaurant:
+    )
+  end
 end
